@@ -4,11 +4,12 @@ import argparse
 import os
 import yaml
 import numpy as np
+import dvc.api
 
-def data_split(param_yaml_path):
-    # with open(param_yaml_path) as yaml_file:
-    #     param_yaml = yaml.safe_load(yaml_file)
-    param_yaml = yaml.safe_load(open(param_yaml_path))
+def data_split():
+
+    param_yaml = dvc.api.params_show()
+    print("Loaded parameters:", param_yaml)
     local_data = param_yaml["data_source"]["local_path"]
     
     data_df = pd.read_csv(local_data)
@@ -31,8 +32,4 @@ def data_split(param_yaml_path):
 
 
 if __name__=="__main__":
-    # args = argparse.ArgumentParser()
-    # args.add_argument("--param_yaml",default="params.yaml")
-    # parsed_args = args.parse_args()
-    # data = data_split(param_yaml_path = parsed_args.param_yaml)
-    data_split(param_yaml_path = "params.yaml")
+    data_split()

@@ -1,6 +1,6 @@
 stages:
   data_split:
-    cmd: python src/data_split.py data/data.csv
+    cmd: python src/data_split.py
     deps:
     - src/data_split.py
     params:
